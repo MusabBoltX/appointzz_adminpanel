@@ -1,5 +1,6 @@
 import 'package:admin_panel_appointzz/Views/Login/Login.dart';
 import 'package:admin_panel_appointzz/Views/SignUp/SignUp.dart';
+import 'package:admin_panel_appointzz/Views/doctors/doc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,8 +14,8 @@ class LogReg extends StatefulWidget {
 
 class _LogRegState extends State<LogReg> {
 
-  var _currentToken = '026';
-  var _yourToken;
+  String currentToken = '026';
+  String yourToken = '833';
 
   @override
   void initState() {
@@ -161,6 +162,13 @@ class _LogRegState extends State<LogReg> {
             ],
           ),
         ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const Doc()));
+        },
+        child: const Text('Go'),
       ),
     );
   }

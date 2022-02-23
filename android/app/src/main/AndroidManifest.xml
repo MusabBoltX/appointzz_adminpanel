@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.admin_panel_appointzz">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.appointzz.adminpanel">
    <application
-        android:label="admin_panel_appointzz"
+       tools:replace="android:label"
+       android:label="Hospital Appointzz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
