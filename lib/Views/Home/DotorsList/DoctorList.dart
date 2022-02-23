@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'HelperCard/DoctorCard.dart';
 
-
 class DoctorsList extends StatefulWidget {
-  const DoctorsList({Key? key}) : super(key: key);
+  final String category;
+
+  const DoctorsList({
+    Key? key,
+    required this.category,
+  }) : super(key: key);
 
   @override
   _DoctorsListState createState() => _DoctorsListState();
@@ -20,10 +24,10 @@ class _DoctorsListState extends State<DoctorsList> {
         leading: IconButton(
             icon: Icon(
               Icons.navigate_before_rounded,
-              size: 35,),
-            onPressed: (){
+              size: 35,
+            ),
+            onPressed: () {
               Navigator.of(context).pop();
-
             }),
         backgroundColor: Color.fromRGBO(7, 78, 99, 0.7),
         title: Image.asset(
@@ -43,7 +47,8 @@ class _DoctorsListState extends State<DoctorsList> {
                 child: Container(
                   margin: EdgeInsets.only(bottom: 10, top: 10),
                   width: MediaQuery.of(context).size.width * 1,
-                  padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+                  padding:
+                      EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                   ),

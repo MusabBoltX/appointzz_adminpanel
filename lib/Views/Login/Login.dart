@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                 child: Container(
                     child: const Text("Log In",
                         textScaleFactor: 1.0,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: const Color.fromRGBO(7, 78, 99, 0.8),
@@ -113,7 +113,7 @@ class _LoginState extends State<Login> {
                         children: [
                           const Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: const Icon(
+                            child: Icon(
                               Icons.lock,
                               color: Color.fromRGBO(7, 78, 99, 0.7),
                             ),
@@ -141,31 +141,6 @@ class _LoginState extends State<Login> {
               const LoginButton(),
 
               Container(height: 20),
-
-              Container(
-                child: Column(
-                  children: [
-                    const Text(
-                      "Don't have an account?",
-                      style: const TextStyle(
-                        fontSize: 15
-                        // color: Color.fromRGBO(7, 78, 99, 0.8),
-                      ),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              CupertinoPageRoute(builder: (context) => const SignUp()));
-                        },
-                        child: const Text("\nSign up",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: const Color.fromRGBO(7, 78, 99, 0.8),
-                          ),
-                        )),
-                  ],
-                ),
-              ),
 
               Container(height: 40),
             ],

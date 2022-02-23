@@ -115,48 +115,48 @@ class _LogRegState extends State<LogReg> {
               ),
 
               // -- Sign up -- //
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => SignUp()));
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width*0.92,
-                  height: 75,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade300,
-                        offset: Offset(2.0, 2.0), //(x,y)
-                        blurRadius: 1.0,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(29),
-                  ),
-
-                  child: Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29)),
-                    color: Color.fromRGBO(7, 78, 99, 0.6),
-
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-
-                      children: [
-                        Text('Sign Up',
-                          style: TextStyle(
-                            fontSize: 20,
-                            letterSpacing: 1,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(231, 232, 225, 1),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: (){
+              //     // Navigator.push(context, CupertinoPageRoute(builder: (context) => SignUp()));
+              //   },
+              //   child: Container(
+              //     width: MediaQuery.of(context).size.width*0.92,
+              //     height: 75,
+              //     decoration: BoxDecoration(
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.grey.shade300,
+              //           offset: Offset(2.0, 2.0), //(x,y)
+              //           blurRadius: 1.0,
+              //         ),
+              //       ],
+              //       borderRadius: BorderRadius.circular(29),
+              //     ),
+              //
+              //     child: Card(
+              //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(29)),
+              //       color: Color.fromRGBO(7, 78, 99, 0.6),
+              //
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         crossAxisAlignment: CrossAxisAlignment.center,
+              //
+              //         children: [
+              //           Text('Sign Utttp',
+              //             style: TextStyle(
+              //               fontSize: 20,
+              //               letterSpacing: 1,
+              //               fontStyle: FontStyle.italic,
+              //               fontWeight: FontWeight.bold,
+              //               color: Color.fromRGBO(231, 232, 225, 1),
+              //             ),
+              //             textAlign: TextAlign.center,
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
             ],
           ),
