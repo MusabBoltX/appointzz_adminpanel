@@ -110,7 +110,7 @@ class _PatientDetailsBodyState extends State<PatientDetailsBody> {
     });
   }
 
-  /// ========= Controllers ========= ///
+  /// ========= Database ========= ///
   final nameController = TextEditingController();
   final ageController = TextEditingController();
   final prevDoctorController = TextEditingController();

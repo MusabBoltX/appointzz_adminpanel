@@ -1,9 +1,7 @@
 import 'package:admin_panel_appointzz/Views/Home/Specialitites/category_screen.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:admin_panel_appointzz/Views/Drawer/DrawerItems.dart';
 import 'package:flutter/material.dart';
-
-import 'DotorsList/DoctorList.dart';
 import 'Helpers/TokenCard.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,71 +12,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    _readDatabase();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     centerTitle: true,
-      //     elevation: 8,
-      //     backgroundColor: const Color.fromRGBO(7, 78, 99, 0.8),
-      //     title: Image.asset(
-      //       'assests/logo.png',
-      //       color: const Color.fromRGBO(231, 232, 225, 1),
-      //       // color: Colors.black,
-      //       scale: 4.3,
-      //     )),
-      // drawer: MyDrawer(),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      appBar: AppBar(
+          centerTitle: true,
+          elevation: 8,
+          leading: Container(),
+          backgroundColor: const Color.fromRGBO(7, 78, 99, 0.8),
+          title: Image.asset(
+            'assests/logo.png',
+            color: const Color.fromRGBO(231, 232, 225, 1),
+            // color: Colors.black,
+            scale: 4.3,
+          )),
+      body: WillPopScope(
+        onWillPop: () async => false,
+        child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Token Cards //
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Column(
-                  children: [
-                    Wrap(
-                      children: const [
-                        TokenCard(
-                          token: '067',
-                          text: 'Current Token \nNumber',
-                        ),
-                        TokenCard(
-                          token: '314',
-                          text: 'Your Token \nNumber',
-                        ),
-                        TokenCard(
-                          token: '314',
-                          text: 'Your Token \nNumber',
-                        ),
-                        TokenCard(
-                          token: '314',
-                          text: 'Your Token \nNumber',
-                        ),
-                      ],
-                    ),
-                    // const Text(
-                    //   '\nEstimated Remaining Time',
-                    //   textScaleFactor: 1.0,
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(fontSize: 24, color: Colors.black54),
-                    // ),
-                    // const Text(
-                    //   '02 Hours 15 Minutes',
-                    //   textScaleFactor: 1.0,
-                    //   textAlign: TextAlign.center,
-                    //   style: TextStyle(fontSize: 20, color: Colors.black54),
-                    // ),
-                  ],
-                ),
+              TokenCard(
+                token: '067',
+                text: 'Current Token \nNumber',
               ),
-
-              // SizedBox(
-              //   child: Image.asset('asset/Images/report.png', scale: 1.5),
-              //   height: MediaQuery.of(context).size.height * 0.3,
-              // ),
 
               Container(
                 height: MediaQuery.of(context).size.height * 0.08,
@@ -87,13 +52,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: // Find Doctors //
-          GestureDetector(
+      bottomNavigationBar: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context,
-              CupertinoPageRoute(
-                  builder: (context) => const CategoryScreen()));
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => const CategoryScreen()));
         },
         child: Container(
           width: MediaQuery.of(context).size.width * 0.92,
@@ -140,13 +102,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  final List<String> _deptList = [
-    "Anesthesiology",
-    "Cardiologist",
-    "Dentist",
-    "Family Physician",
-    "Orthopaedics",
-    "OPD",
-    "Orthopaedics",
-  ];
+  final dbRef = FirebaseDatabase.instance.ref();
+  String displayText = 'loading...';
+
+  void _readDatabase() async {
+    dbRef.child('Appointzz').child('Doctors').child('001/start_time').onValue.listen((event) {
+      final String des = event.snapshot.value.toString();
+      debugPrint(des);
+
+      setState(() {
+        displayText = 'test data $des';
+      });
+    });
+  }
+
 }
